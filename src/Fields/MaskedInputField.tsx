@@ -5,7 +5,7 @@ import { InputField, InputFieldProps } from './InputField';
 import { MaskedInput, MaskedInputProps } from '../Inputs';
 import { GridItemProps } from '../types';
 
-type MaskedInputFieldProps = InputFieldProps & MaskedInputProps & GridItemProps;
+export type MaskedInputFieldProps = InputFieldProps & MaskedInputProps & GridItemProps;
 
 const MaskedInputField = ({ name, ...props }: MaskedInputFieldProps) => {
   const { watch } = useFormContext();

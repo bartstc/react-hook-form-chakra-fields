@@ -19,7 +19,7 @@ export type InputFieldProps = Omit<
 const InputField = ({
   name,
   label,
-  required,
+  required = true,
   disabled,
   helperText,
   id,

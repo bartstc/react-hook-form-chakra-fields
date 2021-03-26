@@ -9,7 +9,7 @@ export type DateFieldProps = Omit<DateInputProps, 'onChange'> &
 const DateField = ({
   name,
   label,
-  required,
+  required = true,
   disabled,
   helperText,
   id,

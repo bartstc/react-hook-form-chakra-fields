@@ -43,7 +43,7 @@ const DateTimeInput = ({
     if (onChange) {
       onChange(dateTimeValue);
     }
-  }, [dateTimeValue, onChange]);
+  }, [dateTimeValue]);
 
   const removeDate = () => {
     setDateValue(null);
