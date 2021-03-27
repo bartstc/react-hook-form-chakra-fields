@@ -51,7 +51,21 @@
     "trailingComma": "es5"
   },
   "name": "react-hook-form-chakra-fields",
-  "author": "bartstc",
+  "author": "Bartosz Stolc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bartstc/react-hook-form-chakra-fields"
+  },
+  "homepage": "https://github.com/bartstc/react-hook-form-chakra-fields",
+  "keywords": [
+    "react-hook-form",
+    "chakra-ui",
+    "chakra-ui/react",
+    "react",
+    "typescript",
+    "form-fields",
+    "js-libraries-integration"
+  ],
   "module": "dist/react-hook-form-chakra-fields.esm.js",
   "size-limit": [
     {
