@@ -34,3 +34,7 @@ yarn add react-hook-form-chakra-fields
 ## Usage Examples - TODO
 
 You can always check [this project repository](https://github.com/bartstc/booking-app/tree/master/employee-web-client) to see how to use this library.
+
+## Meta
+
+This library was invented with [TSDX](https://tsdx.io/).
