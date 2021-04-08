@@ -15,6 +15,8 @@ export const DatePickerStyles = styled(Box)<{
 }>`
   .react-datepicker {
     background-color: ${props => props.calendarBackground};
+    font-family: inherit;
+    border-color: ${props => props.calendarSelectedBackground};
   }
   .react-datepicker-wrapper,
   .react-datepicker__input-container {
@@ -75,6 +77,10 @@ export const DatePickerStyles = styled(Box)<{
       color: white;
       background: ${props => props.calendarSelectedBackground};
       font-weight: bold;
+    }
+
+    .react-datepicker__day--keyboard-selected {
+      background-color: transparent;
     }
   }
 `;
