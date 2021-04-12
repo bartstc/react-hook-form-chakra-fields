@@ -30,7 +30,7 @@ const DateTimeOnlyInput = ({
   };
 
   const [timeValue, setTimeValue] = useState<string | null>(
-    value ? dayjs(value).format('hh:mm') : ''
+    value ? dayjs(value).format('HH:mm') : ''
   );
 
   useEffect(() => {
