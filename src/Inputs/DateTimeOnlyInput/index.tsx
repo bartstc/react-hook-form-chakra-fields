@@ -29,7 +29,9 @@ const DateTimeOnlyInput = ({
       .format('YYYY-MM-DDTHH:mm:ssZ');
   };
 
-  const [timeValue, setTimeValue] = useState<string | null>('');
+  const [timeValue, setTimeValue] = useState<string | null>(
+    value ? dayjs(value).format('hh:mm') : ''
+  );
 
   useEffect(() => {
     if (timeValue === '') return;

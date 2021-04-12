@@ -82,5 +82,9 @@ export const DatePickerStyles = styled(Box)<{
     .react-datepicker__day--keyboard-selected {
       background-color: transparent;
     }
+
+    .react-datepicker__day--disabled {
+      opacity: 0.4;
+    }
   }
 `;
