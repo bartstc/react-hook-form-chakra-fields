@@ -26,6 +26,7 @@ const DateInput = ({
   isInvalid = false,
   value,
   onChange,
+  isClearable = true,
   ...props
 }: DateInputProps) => {
   const { colors } = useTheme();
@@ -68,12 +69,12 @@ const DateInput = ({
         autoComplete="off"
         minDate={new Date(1900, 1, 1)}
         maxDate={new Date(2999, 1, 1)}
+        isClearable={isClearable}
         {...props}
         locale="en"
         dateFormat={props.showTimeInput ? 'yyy/MM/dd h:mm aa' : 'yyyy/MM/dd'}
         timeInputLabel={props.timeInputLabel ?? 'Time:'}
         showPopperArrow={false}
-        isClearable
         selected={value ? new Date(value) : null}
         // @ts-ignore
         onChange={(
