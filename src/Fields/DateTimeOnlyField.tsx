@@ -48,14 +48,17 @@ const DateTimeOnlyField = ({
             {...fieldProps}
             id={id}
             isInvalid={isInvalid}
-            onChange={dateTimeValue => {
-              setValue(name, dateTimeValue, { shouldDirty: true });
-              if (required && dateTimeValue === null) {
+            onChange={(dateTimeValue, timeValue) => {
+              setValue(name, timeValue ? dateTimeValue : '', {
+                shouldDirty: true,
+              });
+
+              if (required && !timeValue) {
                 setError(name, { message: requiredFieldMessage });
                 return;
               }
 
-              if (dateTimeValue) clearErrors(name);
+              if (timeValue && timeValue.length === 5) clearErrors(name);
             }}
           />
         );

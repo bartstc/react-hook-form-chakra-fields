@@ -9,14 +9,17 @@ export type DateTimeOnlyInputProps = Omit<
   TimeInputProps,
   'onChange' | 'value'
 > & {
-  onChange?: (dateTime: string | null) => void;
+  onChange?: (date: string, time: string) => void;
   value?: string | null;
   initDate?: string;
 };
 
 const DateTimeOnlyInput = ({
   id,
-  initDate = dayjs().toString(),
+  initDate = dayjs()
+    .hour(0)
+    .minute(0)
+    .toString(),
   value = null,
   onChange,
   ...props
@@ -29,22 +32,44 @@ const DateTimeOnlyInput = ({
       .format('YYYY-MM-DDTHH:mm:ssZ');
   };
 
+  const [dateTimeValue, setDateTimeValue] = useState<string>(
+    value ? value : initDate
+  );
   const [timeValue, setTimeValue] = useState<string | null>(
-    value ? dayjs(value).format('HH:mm') : ''
+    value ? dayjs(value).format('HH:mm') : null
   );
 
   useEffect(() => {
-    if (timeValue === '') return;
-
     if (onChange) {
       if (timeValue === null) {
-        onChange(null);
         return;
       }
 
-      onChange(insertTimeToDate(value ? value : initDate, timeValue));
+      if (timeValue === '') {
+        onChange(dateTimeValue, '');
+        return;
+      }
+
+      onChange(insertTimeToDate(dateTimeValue, timeValue), timeValue);
     }
   }, [timeValue]);
+
+  const removeTime = () => {
+    setTimeValue('');
+    setDateTimeValue(
+      dayjs(dateTimeValue)
+        .hour(0)
+        .minute(0)
+        .second(0)
+        .format('YYYY-MM-DDTHH:mm:ssZ')
+        .toString()
+    );
+  };
+
+  const insertTime = (time: string) => {
+    setTimeValue(time);
+    setDateTimeValue(insertTimeToDate(dateTimeValue, time));
+  };
 
   return (
     <Box>
@@ -52,7 +77,7 @@ const DateTimeOnlyInput = ({
         id={id}
         value={value ? timeValue! : undefined}
         onChangeTime={time =>
-          isEmpty(time) ? setTimeValue(null) : setTimeValue(time!)
+          isEmpty(time) ? removeTime() : insertTime(time!)
         }
         {...props}
       />

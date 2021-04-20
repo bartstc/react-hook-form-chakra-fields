@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SimpleGrid, Button } from '@chakra-ui/react';
 import * as dayjs from 'dayjs';
+import * as yup from 'yup';
 
 import { Form } from './Form';
 
@@ -19,12 +20,17 @@ interface FormDto {
 }
 
 const ExampleForm = () => {
+  const schema = yup.object().shape({
+    dateTimeOnly: yup.string().required(),
+  });
+
   return (
     <Form<FormDto>
       id="example-form"
       onSubmit={model => {
         console.log(model);
       }}
+      schema={schema}
       defaultValues={{
         string: '',
         date: dayjs()
